@@ -32,11 +32,11 @@ The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| TODO     | Webserver1         |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+|----------|-------------|------------|------------------|
+| Jump Box | Gateway     | 10.0.0.1   | Linux            |
+| Web-1    | Webserver1  |  10.0.0.5          |                  |
+| Web-2    | Webserver2  |   10.0.0.6         |                  |
+
 
 ### Access Policies
 
