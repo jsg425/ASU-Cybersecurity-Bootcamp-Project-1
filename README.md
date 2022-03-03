@@ -60,13 +60,15 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because:
+- Ansible allows administrators to automate daily tasks, saving time in the process.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Install Docker
+- Install python3-pip
+- Install Docker python module
+- Set vm.max_map_count to 262144
+- Download and launch elk container
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -74,21 +76,31 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+- Web-1 10.1.0.5
+- Web-2 10.1.0.6
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- Filebeat
+- Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Changes to log files
+- OS metrics and statistics
+- Resource usage
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the ansible.cfg file to /etc/ansible.
+- Update the ansible.cfg file to include machine, IP, and update the hosts line to include ansible_python_interpreter=/usr/bin/python3 as shown below:
+  - [webservers] 10.1.0.7 ansible_python_interpreter=/usr/bin/python3 10.1.0.5 ansible_python_interpreter=/usr/bin/python3 10.0.0.6       -ansible_python_interpreter=/usr/bin/python3
+  - [elk] 10.1.0.4 ansible_python_interpreter=/usr/bin/python3
+  - Copy install-elk.yml and filebeat-playbook.yml to /etc/ansible
+  - Update install-elk.yml and filebeat-playbook.yml to include the machines you want to use the playbooks on
+- Run playbook
+- Navigate to http://[your.vm.ip]:5601/app/kibana
+
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
